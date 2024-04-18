@@ -1,0 +1,13 @@
+.flex-col
+{
+    background-color: red;
+    display: flex;
+}
+#cats-container
+{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+

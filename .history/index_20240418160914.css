@@ -1,0 +1,11 @@
+.flex-col
+{
+    background-color: red;
+    display: flex;
+}
+#cats-container
+{
+    display: flex;
+    flex-direction: column;
+}
+

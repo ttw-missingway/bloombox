@@ -1,0 +1,50 @@
+.flex-col
+{
+    display: flex;
+}
+#cats-container
+{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+.cat
+{
+    background-color: lightgrey;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 1.5s cubic-bezier(0.19, 1, 0.22, 1); /* Exponential ease-out */
+    box-shadow: 0 0 0 rgba(0,0,0,0); /* Initial state of the shadow, transparent */
+}
+.cat:hover {
+    transform: scale(1.05); /* Adjust scale value as needed */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Subtle drop shadow */
+}
+.cat:hover > .cat-image
+{
+    transform: scale(1.1);
+}
+.cat-image
+{
+    width: 100%;
+    height: calc(100% + 40px);
+    object-fit: cover;
+}
+.img-wrapper
+{
+    display: flex;
+    justify-content: top;
+    align-items: top;
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 200px;
+    background-color: red;
+    border-radius: 10px;
+}
+
+
