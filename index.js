@@ -29,7 +29,9 @@ window.onload = async function () {
   cards.forEach((card) => {
     $("#card-container").prepend(
       `<div class="card">
-      <h1>${card.title}</h1>
+      <div class="card-header">
+        <h1>${card.title}</h1>
+      </div>
       <div class="img-wrapper"><img class="card-image" src="${card.image}" alt="${card.title}"></div>
       <p class="card-copy">${card.description}</p>
       </div>`
