@@ -1,44 +1,48 @@
 .flex-col {
   display: flex;
 }
-#cats-container {
+#card-container {
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
 }
-.cat,
-a.cat {
+.card,
+a.card {
   /* Target both div and a for backward compatibility and future-proofing */
-  background-color: blue;
+  background-color: lightblue;
+  position: relative;
   border-radius: 10px;
-  padding: 10px;
+  padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   justify-content: start;
   align-items: start;
   text-decoration: none; /* Removes the underline from links */
+  line-height: 1.5;
   color: inherit; /* Ensures text color is consistent */
   transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1),
     box-shadow 1.5s cubic-bezier(0.19, 1, 0.22, 1);
   cursor: pointer;
 }
-.cat:hover,
-a.cat:hover {
+.card:hover,
+a.card:hover {
   transform: scale(1.02);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
-.cat:hover > .cat-image {
+.card:hover > .card-image {
   transform: scale(1.1);
 }
-.cat-image {
+.card-image {
+  position: relative;
   width: 100%;
   height: calc(100% + 40px);
   object-fit: cover;
 }
 .img-wrapper {
   display: flex;
+  position: relative;
   justify-content: top;
   align-items: top;
   overflow: hidden;
@@ -47,3 +51,53 @@ a.cat:hover {
   background-color: red;
   border-radius: 10px;
 }
+.card-copy {
+  position: relative;
+  max-height: 10rem;
+  overflow: hidden;
+  padding-right: 1rem; /* Ensure there's space for the pseudo-element */
+}
+
+.card-copy.is-overflowing::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 1.2em; /* Approximately the height of one line of text */
+  background: linear-gradient(to right, rgba(255, 0, 0, 0), lightblue 50%);
+}
+@keyframes glare-effect {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.img-wrapper::before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: var(--glare-position, -100%); /* Use a CSS variable */
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0) 25%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 75%
+  );
+  opacity: 1; 
+  pointer-events: none; 
+  transition: left 0.5s ease; /* Smooth transition for the glare movement */
+  z-index: 1;
+}
+
+.img-wrapper.glare::before {
+  content: ' ';
+  animation: glare-effect 3s linear forwards;
+  opacity: 1; 
+}
+
