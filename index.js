@@ -3,6 +3,17 @@ let cards = [];
 async function logCards() {
   const response = await fetch("https://ghibliapi.vercel.app/films");
   cards = await response.json();
+  const webflowRes = await fetch(
+    "https://api.webflow.com/v2/collections/collection_id/items",
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer 85820ba1a5501d1c7344cac7c54c629e55e62df7c8cbd9c98dcba94794680d57`,
+      },
+    }
+  );
+  let webflowData = await webflowRes.json();
+  console.log(webflowData);
 }
 
 $(document).scroll(function () {
