@@ -23,7 +23,7 @@ $(document).scroll(function () {
   });
 });
 
-async function bloomboxConnect () {
+window.onload = async function () {
   console.log("Starting Bloombox Connection...");
   await logCards();
   console.log("Data fetched: ", cards);
@@ -52,5 +52,3 @@ async function bloomboxConnect () {
   console.log("Hydrating data with javascript");
   console.log("Done");
 };
-
-window.onload = bloomboxConnect;
