@@ -24,9 +24,13 @@ $(document).scroll(function () {
 });
 
 window.onload = async function () {
+  console.log("Starting Bloombox Connection...");
   await logCards();
+  console.log("Data fetched: ", cards);
   $("body").append(`<div id="main_div"></div>`);
+  console.log("Appending to DOM");
   $("#main_div").prepend('<div id="card-container" class="flex-col"></div>');
+  console.log("Prepending to #Main Div");
   cards.forEach((card) => {
     $("#card-container").prepend(
       `<div class="card">
@@ -38,10 +42,13 @@ window.onload = async function () {
       </div>`
     );
   });
+  console.log("Populating #Main Div with fetched data");
   $(".card-copy").each(function () {
     if ($(this).prop("scrollHeight") > $(this).innerHeight()) {
       // Content is overflowing
       $(this).addClass("is-overflowing");
     }
   });
+  console.log("Hydrating data with javascript");
+  console.log("Done");
 };
